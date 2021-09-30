@@ -153,36 +153,5 @@ class PusherBeamsPlugin : FlutterPlugin, MethodCallHandler {
         }
     }
 
-    private fun setUserId(userId: String, tokenProvider: TokenProvider?, callback: BeamsCallback<Void, PusherCallbackError> = NoopBeamsCallback()) {
-        if (tokenProvider == null) { // this can happen when using Java
-            throw IllegalStateException("Token provider can't be null")
-        }
-        PushNotifications.tokenProvider[instanceId] = tokenProvider
-
-        /* if (!startHasBeenCalledThisSession) {
-           throw IllegalStateException("Start method must be called before setUserId")
-         }
-
-         synchronized(deviceStateStore) {
-           if (
-                   deviceStateStore.setUserIdHasBeenCalledWith != null &&
-                   deviceStateStore.setUserIdHasBeenCalledWith != userId
-           ) {
-             throw PusherAlreadyRegisteredAnotherUserIdException(
-                     "This device has already been registered to another user id.")
-           }
-
-           deviceStateStore.setUserIdHasBeenCalledWith = userId
-         } */
-
-        try {
-            instance?.setUserId(userId, tokenProvider, callback)
-        } catch (e: Exception) {
-            result.error(null, e.message, null)
-        }
-
-        //serverSyncEventHandler.addUserIdCallback(userId, callback)
-        //serverSyncHandler.sendMessage(ServerSyncHandler.setUserId(userId))
-    }
 
 }
