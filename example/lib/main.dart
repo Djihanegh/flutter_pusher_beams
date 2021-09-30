@@ -8,7 +8,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // Initialize PusherBeams as soon as possible (here is RECOMMENDED)
-  await PusherBeams.start('YOUT INSTANCE ID GOES HERE');
+  await PusherBeams.start('');
 
   runApp(MyApp());
 }
@@ -29,7 +29,7 @@ class _MyAppState extends State<MyApp> {
   Future<void> initPluginTest() async {
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
-      // As in Pusher Beams Get Started
+
       await PusherBeams.addDeviceInterest('hello');
 
       // For debug purposes on Debug Console

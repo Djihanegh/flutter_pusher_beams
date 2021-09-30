@@ -32,8 +32,10 @@ class PusherBeams {
     await _channel.invokeMethod('clearDeviceInterests');
   }
 
-  static Future<bool> setUserId(String? userId, tokenProvider) {
-    throw UnimplementedError('This method is still unimplemented');
+  static Future<void> setUserId(String? userId, tokenProvider) async {
+    //throw UnimplementedError('This method is still unimplemented');
+
+    await _channel.invokeMethod('setUserId');
   }
 
   static Future<void> clearAllState() async {
